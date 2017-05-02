@@ -34,7 +34,7 @@ end
 def my_join(arr, separator = "")
   str = ""
   arr.each { |el| str << el + separator }
-  str.chars.take(str.length - 1).join
+  str.chars.take(str.length - 1).join.to_a
 end
 
 # Write a method that converts its argument to weirdcase, where every odd
