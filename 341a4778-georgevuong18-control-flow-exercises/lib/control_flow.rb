@@ -89,28 +89,36 @@ end
 # Write a method that returns a new array containing all the elements of the
 # original array in reverse order.
 def my_reverse(arr)
-
+  arr.join.reverse.chars.map(&:to_i)
 end
 
 # Write a method that returns a boolean indicating whether the argument is
 # prime.
 def prime?(num)
-
+  arr = []
+  return false if num == 1
+  (1..num).each { |int| arr << int if num % int == 0 }
+  return true if arr.length <= 2
+  false
 end
 
 # Write a method that returns a sorted array of the factors of its argument.
 def factors(num)
-
+  arr = []
+  (1..num).each { |int| arr << int if num % int == 0 }
+  arr
 end
 
-# Write a method that returns a sorted array of the prime factors of its argument.
+# Write a method that returns a sorted array of prime factors of its argument.
 def prime_factors(num)
-
+  arr = []
+  factors(num).each { |int| arr << int if prime?(int) }
+  arr
 end
 
 # Write a method that returns the number of prime factors of its argument.
 def num_prime_factors(num)
-
+  prime_factors(num).length
 end
 
 
