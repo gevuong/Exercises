@@ -32,9 +32,7 @@ end
 # Write your own version of the join method. separator = "" ensures that the
 # default seperator is an empty string.
 def my_join(arr, separator = "")
-  str = ""
-  arr.each { |el| str << el + separator }
-  str.chars.take(str.length - 1).join.to_a
+  arr.join(separator)
 end
 
 # Write a method that converts its argument to weirdcase, where every odd
@@ -54,13 +52,16 @@ end
 # string, e.g., reverse_five("Looks like my luck has reversed") => "skooL like
 # my luck has desrever")
 def reverse_five(str)
-  new_str = ""
+  arr = []
   str.split.each do |word|
-    new_str << word.reverse + " " if word.length >= 5
-    new_str << word + " "
+    if word.length >= 5
+      arr << word.reverse
+    else
+      arr << word
+    end
   end
 
-  new_str
+  arr.join(" ")
 end
 
 # Return an array of integers from 1 to n (inclusive), except for each multiple
@@ -70,7 +71,7 @@ end
 def fizzbuzz(n)
   arr = (1..n).to_a
   arr.each_with_index do |int, el|
-    if int % 3 && int % 5 == 0
+    if int % 3 == 0 && int % 5 == 0
       arr[el] = "fizzbuzz"
     elsif int % 3 == 0
       arr[el] = "fizz"
