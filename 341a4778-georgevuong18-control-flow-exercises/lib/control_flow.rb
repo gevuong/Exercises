@@ -127,5 +127,13 @@ end
 # Return the one integer in an array that is even or odd while the rest are of
 # opposite parity, e.g. oddball([1,2,3]) => 2, oddball([2,4,5,6] => 5)
 def oddball(arr)
+  arr_even = []
+  arr_odd = []
+  arr.each do |int|
+    arr_even << int if int.even?
+    arr_odd << int if int.odd?
+  end
 
+  return arr_even[0] if arr_even.length == 1
+  return arr_odd[0] if arr_odd.length == 1
 end
