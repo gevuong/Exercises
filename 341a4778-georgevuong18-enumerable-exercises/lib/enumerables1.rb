@@ -22,6 +22,8 @@ end
 # multiplied by its index. array_sum_with_index([2, 9, 7]) => 23 because (2 * 0) +
 # (9 * 1) + (7 * 2) = 0 + 9 + 14 = 23
 def array_sum_with_index(arr)
+  return 0 if arr.empty?
+  arr.map.with_index { |int, idx| int * idx } .reduce(:+)
 end
 
 # MEDIUM
@@ -30,6 +32,7 @@ end
 # the actual retail price without going over that price. Assume there is always
 # at least one bid below the retail price.
 def price_is_right(bids, actual_retail_price)
+  bids.select { |bid| bid <= actual_retail_price } .sort.max
 end
 
 # Given an array of numbers, return an array of those numbers that have at least
@@ -38,9 +41,11 @@ end
 # 2, 4, 8, 16) and the others have fewer than five factors. Consider writing a
 # helper method num_factors
 def at_least_n_factors(numbers, n)
+  numbers.select { |num| num_factors(num).length >= n }
 end
 
 def num_factors(number)
+  (1..number).map { |int| int if number % int == 0 } .compact
 end
 
 # HARD
