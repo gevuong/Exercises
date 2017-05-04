@@ -5,22 +5,31 @@ require 'byebug'
 # Define a method that returns the sum of all the elements in its argument (an
 # array of numbers).
 def array_sum(arr)
+  return 0 if arr.empty?
+  arr.reduce(:+)
 end
 
 # Define a method that returns a boolean indicating whether substring is a
 # substring of each string in the long_strings array.
 # Hint: you may want a sub_tring? helper method
 def in_all_strings?(long_strings, substring)
+  long_strings.all? { |str| str.include?(substring) }
 end
 
 # Define a method that accepts a string of lower case words (no punctuation) and
 # returns an array of letters that occur more than once, sorted alphabetically.
 def non_unique_letters(string)
+  unique_letters(string).map { |ch| ch if string.count(ch) > 1 } .compact
+end
+
+def unique_letters(string)
+  string.split.join.chars.uniq
 end
 
 # Define a method that returns an array of the longest two words (in order) in
 # the method's argument. Ignore punctuation!
 def longest_two_words(string)
+  string.split.sort_by(&:length) [-2..-1]
 end
 
 # MEDIUM

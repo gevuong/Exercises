@@ -3,7 +3,7 @@
 # Define a method that returns an array of only the even numbers in its argument
 # (an array of integers).
 def get_evens(arr)
-   arr.select(&:even?)
+  arr.select(&:even?)
 end
 
 # Define a method that returns a new array of all the elements in its argument
