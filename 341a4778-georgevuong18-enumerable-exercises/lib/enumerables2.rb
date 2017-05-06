@@ -61,9 +61,12 @@ end
 # appear multiple times in a row and remove them. You may wish to write a helper
 # method no_repeats?
 def one_week_wonders(songs)
+  songs.select { |song| song if no_repeats?(song, songs) } .uniq
 end
 
 def no_repeats?(song_name, songs)
+  songs.each_with_index { |song, idx| return false if song_name == song && song_name == songs[idx+1] }
+  true
 end
 
 # Define a method that, given a string of words, returns the word that has the
