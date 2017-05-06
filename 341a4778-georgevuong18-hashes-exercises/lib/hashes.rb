@@ -3,11 +3,13 @@
 # Define a method that, given a sentence, returns a hash of each of the words as
 # keys with their lengths as values. Assume the argument lacks punctuation.
 def word_lengths(str)
+  str.split.map { |word| [word, word.length] } .to_h
 end
 
 # Define a method that, given a hash with integers as values, returns the key
 # with the largest value.
 def greatest_key_by_val(hash)
+  hash.each_key { |key| return key if hash[key] == hash.values.max }
 end
 
 # Define a method that accepts two hashes as arguments: an older inventory and a
@@ -18,11 +20,16 @@ end
 # update_inventory(march, april) => {rubies: 10, emeralds: 27, diamonds: 2,
 # moonstones: 5}
 def update_inventory(older, newer)
+  newer.each { |key, val| older[key] = val }
+  older
 end
 
 # Define a method that, given a word, returns a hash with the letters in the
 # word as keys and the frequencies of the letters as values.
 def letter_counts(word)
+  ch_count = Hash.new(0)
+  word.chars.each { |ch| ch_count[ch] += 1 }
+  ch_count
 end
 
 # MEDIUM
