@@ -75,17 +75,16 @@ end
 # wish to write the helper methods c_distance and remove_punctuation.
 
 def for_cs_sake(string)
-  string.split.reduce(0) do |short_c_dist, word|
-    if c_distance(word) < short_c_dist
-      word
-    else
-      short_c_dist
-    end
+  str = ""
+  shortest = ""
+  string.split.each_with_index do |word, idx|
+  next unless word.include?("c")
+  shortest = c_distance(word)
   end
 end
 
 def c_distance(word)
-  word.downcase.reverse.index("c")
+  word.delete("?!.,").downcase.reverse.index("c")
 end
 
 # Define a method that, given an array of numbers, returns a nested array of
@@ -94,6 +93,5 @@ end
 # [[0, 1]] repeated_number_ranges([1, 2, 3, 3, 4, 4, 4]) => [[2, 3], [4, 6]]
 
 def repeated_number_ranges(arr)
-  idx_arr = []
-  arr.reduce { |acc, el| if acc == el }
+  idx_range = []
 end
