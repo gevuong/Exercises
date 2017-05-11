@@ -51,4 +51,31 @@
 
 class Course
 
+  def initialize(name, department, credits)
+    @name = name
+    @department = department
+    @credits = credits
+    @students = []
+  end
+
+  def students
+    @students
+  end
+
+  def name
+    @name
+  end
+
+  def department
+    @department
+  end
+
+  def credits
+    @credits
+  end
+
+  def add_student(student)
+    @students << student
+  end
+
 end
