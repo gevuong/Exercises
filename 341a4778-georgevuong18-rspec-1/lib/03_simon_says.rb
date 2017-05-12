@@ -6,8 +6,10 @@ def shout(str)
   str.upcase
 end
 
-def repeat(str)
-  str + " " + str
+def repeat(str, num = 2)
+  arr = []
+  (1..num).each { arr << str }
+  arr.join(" ")
 end
 
 def start_of_word(str, num)
@@ -19,9 +21,17 @@ def first_word(str)
 end
 
 def titleize(str)
-  # arr = ["the", "over", "and"]
-  # if str.split.include?(arr)
-  # always capitalize first letter of first word regardless
-  # compare each word with arr, and ignore if include? is true 
-  str.split.map(&:capitalize) .join(" ")
+  arr = ["the", "over", "and"]
+  title = []
+  str.split.each_with_index do |word, idx|
+    if idx == 0
+      title << word.capitalize
+    elsif arr.include?(word)
+      title << word.downcase
+    else
+      title << word.capitalize
+    end
+  end
+
+  title.join(" ")
 end
