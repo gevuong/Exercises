@@ -10,23 +10,24 @@
 #   could create a random number using the Random class, or you could use the
 #   `shuffle` method in array.
 
-  def guessing_game
-    answer = rand(1..100)
-    counter = 0
-    user_input = 0
+def guessing_game
+  answer = rand(1..100)
+  counter = 0
+  user_input = 0
 
-    while user_input != answer
-      puts "Guess a number between 1 and 100"
-      puts user_input = gets.chomp.to_i
-      if user_input < answer
-        counter += 1
-        puts "too low"
-      elsif user_input > answer
-        counter += 1
-        puts "too high"
-      else
-        counter += 1
-        puts "You are right! It took #{counter} guesses"
-      end
+  while user_input != answer
+    puts "Guess a number between 1 and 100"
+    puts user_input = gets.chomp.to_i
+    #raise NoMoreInput.new("cannot select zero!") if user_input == 0
+    if user_input < answer
+      counter += 1
+      puts "too low"
+    elsif user_input > answer
+      counter += 1
+      puts "too high"
+    else
+      counter += 1
+      puts "You are right! It took #{counter} guesses"
     end
   end
+end
