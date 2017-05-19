@@ -11,25 +11,22 @@
 #   `shuffle` method in array.
 
   def guessing_game
-    answer = rand(100)
+    answer = rand(1..100)
     counter = 0
-    # prompt user to guess a number
-    puts "Guess a number between 1 and 100"
-    user_input = gets.chomp
-    puts user_input
-     raise NoMoreInput if user_input == 0
-    # loop do
-    #   user_input = gets.chomp
-    #   puts user_input
-    #   if user_input > answer
-    #     counter += 1
-    #     puts "#{user_input} is too high, guess again"
-    #   elsif user_input < answer
-    #     counter += 1
-    #     puts "#{user_input} is too low, guess again"
-    #   else
-    #     puts " #{user_input} is right! And it took #{counter} guesses"
-    #     break
-    #   end
-    # end
+    user_input = 0
+
+    while user_input != answer
+      puts "Guess a number between 1 and 100"
+      puts user_input = gets.chomp.to_i
+      if user_input < answer
+        counter += 1
+        puts "too low"
+      elsif user_input > answer
+        counter += 1
+        puts "too high"
+      else
+        counter += 1
+        puts "You are right! It took #{counter} guesses"
+      end
+    end
   end
