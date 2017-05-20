@@ -18,4 +18,14 @@
 # # options shouldn't change.
 # ```
 
-#init commit
+def transmogrify(str, options = {})
+  defaults = {
+    times: 0,
+    upcase: true,
+    reverse: true
+  }
+
+  options = defaults.merge(options)
+
+  #options[:times].options[:upcase]
+end
